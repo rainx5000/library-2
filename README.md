@@ -35,7 +35,9 @@ if title/author/pages are the same when you complete the form inside the library
 
 add an event listener for the ADD btn on the form, that will first run the addBookToLibrary, and then the domController function that would scan the items first and if they are present in the dom, dont create another one until it gets to a new one. 
 
+remove btn
+we should add an event listener for the book container, where if e.target is the delete btn, it would scan the myLbrary array and remove it if it matches the book containers title child
 
-
+We will create our eventlistener for book, inside the domController, the function for the eventhandler will be outside. Where we will do our magic
 
 
