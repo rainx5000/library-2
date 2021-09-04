@@ -22,6 +22,12 @@ bookForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.checked);
   domController(myLibrary);
+
+  bookForm.classList.toggle("hidden");
+  titleInput.value = '';
+  authorInput.value = '';
+  pagesInput.value = '';
+  isReadInput.checked = false;
 });
 
 newBookBtn.addEventListener("click", (e) => {
@@ -68,20 +74,36 @@ function domController (libraryArray) {
     deleteBtn.textContent = "Delete";
 
     deleteBtn.classList.add("delete-btn")
+    isRead.classList.add("isReadBtn")
 
     book.append(title, author, pages, isRead, deleteBtn);
     booksContainer.append(book);
 
+    const myLibraryTitles = myLibrary.map(el => el.title);
+    const bookTitle = title.textContent
     book.addEventListener("click", (e) => {
       if (e.target.classList.contains("delete-btn")) {
-        const myLibraryTitles = myLibrary.map(el => el.title);
-        const bookTitle = title.textContent
         booksContainer.children[myLibraryTitles.indexOf(bookTitle)].remove()
         myLibrary.splice(myLibraryTitles.indexOf(bookTitle), 1)
-
+      } 
+      
+      if (e.target.classList.contains("isReadBtn")) {
+        if (item.isRead) {
+          e.target.textContent = "Not Read"
+          myLibrary[myLibraryTitles.indexOf(bookTitle)].isRead = false;
+        } else {
+          e.target.textContent = "Read"
+          myLibrary[myLibraryTitles.indexOf(bookTitle)].isRead = true;
+        }
+        
       }
     })
   })
 }
+
+// function formReset() {
+//   bookForm.classList.toggle("hidden");
+
+// }
 
 domController(myLibrary)
