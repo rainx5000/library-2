@@ -1,4 +1,6 @@
 const booksContainer = document.querySelector(".books-container");
+const addBtnForm = document.querySelector(".add-btn");
+const bookForm = document.querySelector(".book-form");
 
 
 let myLibrary = [
@@ -9,6 +11,20 @@ let myLibrary = [
     isRead: true
   }
 ];
+
+bookForm.addEventListener("submit", (e) => {
+  const titleInput = document.querySelector("#title");
+  const authorInput = document.querySelector("#author");
+  const pagesInput = document.querySelector("#pages");
+  const isReadInput = document.querySelector("#isRead");
+  e.preventDefault();
+  addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.checked);
+  domController(myLibrary);
+});
+
+
+
+
 
 function Book(title, author, pages, isRead) {
   this.title = title
@@ -36,10 +52,10 @@ function domController (libraryArray) {
     author.textContent = item.author;
     pages.textContent = item.pages;
     item.isRead ? isRead.textContent = "Read" : isRead.textContent = "Not Read";
-    deleteBtn.textContent = "Delete"
+    deleteBtn.textContent = "Delete";
 
-    book.append(title, author, pages, isRead, deleteBtn)
-    booksContainer.append(book)
+    book.append(title, author, pages, isRead, deleteBtn);
+    booksContainer.append(book);
   })
 }
 

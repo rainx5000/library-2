@@ -33,5 +33,9 @@ If we have 3 books in there already, when we create a new book object, it will g
 if title/author/pages are the same when you complete the form inside the library, then dont add the book since we already have it inside the library
 
 
+add an event listener for the ADD btn on the form, that will first run the addBookToLibrary, and then the domController function that would scan the items first and if they are present in the dom, dont create another one until it gets to a new one. 
+
+
+
 
 
