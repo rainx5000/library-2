@@ -21,3 +21,17 @@ TASKS:
 
 
 OPTIONAL - create localStorage with the docs on the project page.
+
+
+////////////////////////////////////
+My random planning:
+
+We will create a function that would loop over the myLibrary array
+
+If we have 3 books in there already, when we create a new book object, it will get pushed into the array. This function will loop over the array and compare it to the library section of the html, and it will match the titles, if there is a book already showcased it will skip over, but once it gets to a book that is not in the DOM, it will create it and append to the library section. 
+
+if title/author/pages are the same when you complete the form inside the library, then dont add the book since we already have it inside the library
+
+
+
+
