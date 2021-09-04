@@ -40,7 +40,10 @@ function addBookToLibrary(title, author, pages, isRead) {
 
 
 function domController (libraryArray) {
+  const domBooksArray = Array.from(booksContainer.children);
+  const domBooksTitles = domBooksArray.map(el => el.firstChild.textContent);
   libraryArray.forEach(item => {
+    if (domBooksTitles.includes(item.title)) return;
     const book = document.createElement("div");
     const title = document.createElement("h2");
     const author = document.createElement("h3");
