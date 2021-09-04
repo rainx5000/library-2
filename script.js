@@ -7,13 +7,11 @@ window.addEventListener("click", (e) => {
 const booksContainer = document.querySelector(".books-container");
 const addBtnForm = document.querySelector(".add-btn");
 const bookForm = document.querySelector(".book-form");
+const newBookBtn = document.querySelector(".new-book-btn");
 
 
 
 let myLibrary = [];
-
-
-
 
 
 bookForm.addEventListener("submit", (e) => {
@@ -25,6 +23,11 @@ bookForm.addEventListener("submit", (e) => {
   addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.checked);
   domController(myLibrary);
 });
+
+newBookBtn.addEventListener("click", (e) => {
+  bookForm.classList.toggle("hidden");
+})
+
 
 
 
@@ -43,7 +46,6 @@ function addBookToLibrary(title, author, pages, isRead) {
   const domBooksTitles = domBooksArray.map(el => el.firstChild.textContent);
   if (domBooksTitles.includes(title)) return;
   myLibrary.push(book);
-  console.log(myLibrary)
 }
 
 
@@ -71,22 +73,15 @@ function domController (libraryArray) {
     booksContainer.append(book);
 
     book.addEventListener("click", (e) => {
-      console.log('hi')
       if (e.target.classList.contains("delete-btn")) {
         const myLibraryTitles = myLibrary.map(el => el.title);
         const bookTitle = title.textContent
-        console.log(myLibrary.indexOf(bookTitle))
         booksContainer.children[myLibraryTitles.indexOf(bookTitle)].remove()
         myLibrary.splice(myLibraryTitles.indexOf(bookTitle), 1)
 
       }
     })
   })
-
-  // function refreshLibrary () {
-  //   myLibrary
-  // }
-  
 }
 
 domController(myLibrary)
