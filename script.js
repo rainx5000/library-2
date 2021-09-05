@@ -2,6 +2,7 @@ const booksContainer = document.querySelector(".books-container");
 const addBtnForm = document.querySelector(".add-btn");
 const bookForm = document.querySelector(".book-form");
 const newBookBtn = document.querySelector(".new-book-btn");
+const bookFormContainer = document.querySelector(".form-container");
 
 let myLibrary = [];
 
@@ -15,6 +16,7 @@ bookForm.addEventListener("submit", (e) => {
   domController(myLibrary);
 
   bookForm.classList.toggle("hidden");
+  bookFormContainer.classList.toggle("hidden")
   titleInput.value = '';
   authorInput.value = '';
   pagesInput.value = '';
@@ -23,6 +25,7 @@ bookForm.addEventListener("submit", (e) => {
 
 newBookBtn.addEventListener("click", (e) => {
   bookForm.classList.toggle("hidden");
+  bookFormContainer.classList.toggle("hidden")
 })
 
 function Book(title, author, pages, isRead) {
