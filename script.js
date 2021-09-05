@@ -1,18 +1,9 @@
-window.addEventListener("click", (e) => {
-  // console.log(Array.from(e.target.parentElement.children))
-  // console.log(e.target.classList.contains("delete-btn")
-  //   );
-})
-
 const booksContainer = document.querySelector(".books-container");
 const addBtnForm = document.querySelector(".add-btn");
 const bookForm = document.querySelector(".book-form");
 const newBookBtn = document.querySelector(".new-book-btn");
 
-
-
 let myLibrary = [];
-
 
 bookForm.addEventListener("submit", (e) => {
   const titleInput = document.querySelector("#title");
@@ -34,11 +25,6 @@ newBookBtn.addEventListener("click", (e) => {
   bookForm.classList.toggle("hidden");
 })
 
-
-
-
-
-
 function Book(title, author, pages, isRead) {
   this.title = title
   this.author = author
@@ -53,7 +39,6 @@ function addBookToLibrary(title, author, pages, isRead) {
   if (domBooksTitles.includes(title)) return;
   myLibrary.push(book);
 }
-
 
 function domController (libraryArray) {
   const domBooksArray = Array.from(booksContainer.children);
@@ -73,20 +58,23 @@ function domController (libraryArray) {
     item.isRead ? isRead.textContent = "Read" : isRead.textContent = "Not Read";
     deleteBtn.textContent = "Delete";
 
-    deleteBtn.classList.add("delete-btn")
-    isRead.classList.add("isReadBtn")
+    book.classList.add("book-container");
+    title.classList.add("book-title");
+    author.classList.add("book-author");
+    pages.classList.add("book-pages");
+    isRead.classList.add("isReadBtn");
+    deleteBtn.classList.add("delete-btn");
 
     book.append(title, author, pages, isRead, deleteBtn);
     booksContainer.append(book);
 
+    book.addEventListener("click", (e) => {
     const myLibraryTitles = myLibrary.map(el => el.title);
     const bookTitle = title.textContent
-    book.addEventListener("click", (e) => {
       if (e.target.classList.contains("delete-btn")) {
         booksContainer.children[myLibraryTitles.indexOf(bookTitle)].remove()
         myLibrary.splice(myLibraryTitles.indexOf(bookTitle), 1)
       } 
-      
       if (e.target.classList.contains("isReadBtn")) {
         if (item.isRead) {
           e.target.textContent = "Not Read"
@@ -100,10 +88,4 @@ function domController (libraryArray) {
     })
   })
 }
-
-// function formReset() {
-//   bookForm.classList.toggle("hidden");
-
-// }
-
 domController(myLibrary)

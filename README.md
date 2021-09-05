@@ -39,5 +39,13 @@ remove btn
 we should add an event listener for the book container, where if e.target is the delete btn, it would scan the myLbrary array and remove it if it matches the book containers title child
 
 We will create our eventlistener for book, inside the domController, the function for the eventhandler will be outside. Where we will do our magic
+ 
+
+ colors:
+ light blue: #0077b6
+ black: #000000
+ superlight green: #f1faee
+ superlight blue: #eef0fa
+
 
 

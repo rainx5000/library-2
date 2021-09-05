@@ -1,9 +1,33 @@
-/* .book-form {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;700&display=swap');
+
+body {
+  text-align: center;
+  font-family: 'IBM Plex Sans KR', sans-serif;
 }
-*/
+
+.header {
+  background-color: #0077b6;
+  padding-bottom: 1rem;
+}
+h1 {
+  margin: 0;
+  padding: 40px 0px 20px 0px;
+  color: white;
+  font-size: 3em;
+  letter-spacing: .1em;
+}
+
+.new-book-btn {
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 4px 10px;
+}
+.new-book-btn:hover {
+  background-color: #eef0fa;
+}
 
 .book-form {
   display: grid;
