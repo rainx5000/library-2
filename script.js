@@ -4,7 +4,12 @@ const bookForm = document.querySelector(".book-form");
 const newBookBtn = document.querySelector(".new-book-btn");
 const bookFormContainer = document.querySelector(".form-container");
 
-let myLibrary = [];
+const storedArray = JSON.parse(localStorage.getItem("libraryArray"));
+
+let myLibrary = storedArray || [];
+if (myLibrary) domController(myLibrary);
+
+
 
 bookForm.addEventListener("submit", (e) => {
   const titleInput = document.querySelector("#title");
@@ -41,6 +46,7 @@ function addBookToLibrary(title, author, pages, isRead) {
   const domBooksTitles = domBooksArray.map(el => el.firstChild.textContent);
   if (domBooksTitles.includes(title)) return;
   myLibrary.push(book);
+  saveToLocalStorage(myLibrary);
 }
 
 function domController (libraryArray) {
@@ -55,10 +61,9 @@ function domController (libraryArray) {
     const isRead = document.createElement("button");
     const deleteBtn = document.createElement("button");
     
-    title.textContent = `" ${item.title} "`;
+    title.textContent = item.title;
     author.textContent = `- ${item.author}`;
     pages.textContent = `${item.pages} pages`;
-    // item.isRead ? isRead.textContent = "Read" : isRead.textContent = "Not Read";
     if (item.isRead) {
       isRead.textContent = "Read";
       isRead.classList.add("read");
@@ -83,20 +88,27 @@ function domController (libraryArray) {
       if (e.target.classList.contains("delete-btn")) {
         booksContainer.children[myLibraryTitles.indexOf(bookTitle)].remove()
         myLibrary.splice(myLibraryTitles.indexOf(bookTitle), 1)
+        saveToLocalStorage(myLibrary);
       } 
       if (e.target.classList.contains("isReadBtn")) {
         if (item.isRead) {
           e.target.textContent = "Not Read"
           e.target.classList.toggle("read");
           myLibrary[myLibraryTitles.indexOf(bookTitle)].isRead = false;
+          saveToLocalStorage(myLibrary);
         } else {
           e.target.textContent = "Read"
           e.target.classList.toggle("read");
           myLibrary[myLibraryTitles.indexOf(bookTitle)].isRead = true;
+          saveToLocalStorage(myLibrary);
         }
         
       }
     })
   })
 }
-domController(myLibrary)
+
+const saveToLocalStorage = (myLibrary) => {
+  localStorage.setItem('libraryArray', JSON.stringify(myLibrary))
+}
+
