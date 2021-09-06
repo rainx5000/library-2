@@ -55,10 +55,16 @@ function domController (libraryArray) {
     const isRead = document.createElement("button");
     const deleteBtn = document.createElement("button");
     
-    title.textContent = item.title;
-    author.textContent = item.author;
-    pages.textContent = item.pages;
-    item.isRead ? isRead.textContent = "Read" : isRead.textContent = "Not Read";
+    title.textContent = `" ${item.title} "`;
+    author.textContent = `- ${item.author}`;
+    pages.textContent = `${item.pages} pages`;
+    // item.isRead ? isRead.textContent = "Read" : isRead.textContent = "Not Read";
+    if (item.isRead) {
+      isRead.textContent = "Read";
+      isRead.classList.add("read");
+    } else {
+      isRead.textContent = "Not Read";
+    }
     deleteBtn.textContent = "Delete";
 
     book.classList.add("book-container");
@@ -81,9 +87,11 @@ function domController (libraryArray) {
       if (e.target.classList.contains("isReadBtn")) {
         if (item.isRead) {
           e.target.textContent = "Not Read"
+          e.target.classList.toggle("read");
           myLibrary[myLibraryTitles.indexOf(bookTitle)].isRead = false;
         } else {
           e.target.textContent = "Read"
+          e.target.classList.toggle("read");
           myLibrary[myLibraryTitles.indexOf(bookTitle)].isRead = true;
         }
         

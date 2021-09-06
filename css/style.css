@@ -3,6 +3,8 @@
 body {
   text-align: center;
   font-family: 'IBM Plex Sans KR', sans-serif;
+  height: 100vh;
+  background-color: #ffffff;
 }
 
 .header {
@@ -24,6 +26,9 @@ h1 {
   border-radius: 2px;
   cursor: pointer;
   padding: 4px 10px;
+  color: #0077b6;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 .new-book-btn:hover {
   background-color: #eef0fa;
@@ -66,9 +71,60 @@ h1 {
   width: 20px;
 }
 .books-container {
-  height: 600px;
+  display: flex;
+  justify-content: flex-start;
+  margin: auto;
+  width: 60%;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  padding-top: 20px;
+  flex-wrap: wrap;
+}
+.book-container {
+  background-color: #0077b6;
+  height: fit-content;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0px 20px 20px 20px;
+  width: 20%;
+  color: white;
+}
+.book-author {
+  font-style: italic;
+  font-weight: 400;
+  width: fit-content;
+  margin-left: auto;
+}
+.book-pages {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.delete-btn, 
+.isReadBtn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  background-color: orange;
+  border-radius: 3px;
+  color: white;
+  font-weight: 700;
+  padding: 3px 5px;
+}
+.delete-btn {
+  background-color: #c60f13;
+  margin-left: 5%;
 }
 
 .hidden {
   display: none;
 }
+
+.read {
+  background-color: green;
+}
+/* .not-read {
+  background-color: orange;
+} */
